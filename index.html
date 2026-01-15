@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación Bautizo - Thiago</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .card {
+      max-width: 600px;
+      background-color: #001a33;
+      border: 2px solid #00bfff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #00bfff;
+      text-align: center;
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      border-bottom: 2px solid #00bfff;
+    }
+    .card h1 {
+      color: #00bfff;
+      margin: 20px 0 10px;
+    }
+    .card p {
+      padding: 0 20px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .info {
+      margin: 20px;
+      font-size: 1rem;
+      color: #ccc;
+    }
+    .map-link {
+      background-color: #00bfff;
+      color: #000;
+      padding: 12px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin: 10px 5px;
+    }
+    #contador {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.4rem;
+      color: #00bfff;
+      background-color: #000;
+      padding: 10px 20px;
+      border: 1px solid #00bfff;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: inline-block;
+    }
+    .footer {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 10px;
+    }
+    @media (max-width: 600px) {
+      .card {
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="imagenes/thiago.jpg" alt="Invitación bautizo Thiago">
+    <h1>¡Mi Bautizo!</h1>
+
+    <p>Con mucha alegría te invitamos a compartir un momento muy especial:</p>
+    <h1 style="margin: 0; color: #00bfff;">Thiago</h1>
+    <p>será bautizado y queremos que nos acompañes en esta bendición.</p>
+
+    <div class="info">
+      <h1>Fecha: Sábado 28 de febrero, 2026</h1>
+      <p><strong>Padres:</strong> Arturo Contreras & Cristina Landeros</p>
+      <p><strong>Padrinos:</strong> Daniel Balderas & Rebeca Landeros</p>
+
+      <p>📍 <strong>Misa:</strong><br>
+      Av. Pathe, Calle Ramón Rodríguez, Esq. Pathe, 76020 Santiago de Querétaro, Qro.<br>
+      🕒 12:00 PM</p>
+      <a class="map-button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Av.+Pathe+Calle+Ramón+Rodríguez+Esq.+Pathe+76020+Santiago+de+Querétaro">
+        Ver ubicación Misa
+      </a>
+
+      <p>🎉 <strong>Recepción:</strong><br>
+      C. Doctores 302, El Marqués, 76047 Santiago de Querétaro, Qro.<br>
+      🕒 3:00 PM</p>
+      <a class="map-button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=C.+Doctores+302+El+Marqués+76047+Santiago+de+Querétaro">
+        Ver ubicación Recepción
+      </a>
+
+      <div id="contador">Calculando...</div>
+    </div>
+
+    <div class="footer"><h1>¡Te esperamos con cariño! 🙏</h1></div>
+  </div>
+
+  <script>
+    const fechaObjetivo = new Date("2026-02-28T12:00:00");
+
+    function actualizarContador() {
+      const ahora = new Date();
+      const diferencia = fechaObjetivo - ahora;
+
+      if (diferencia <= 0) {
+        document.getElementById("contador").innerHTML = "¡El día ha llegado!";
+        return;
+      }
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+      document.getElementById("contador").innerHTML =
+        `Faltan ${dias} días, ${horas}h ${minutos}m ${segundos}s`;
+    }
+
+    actualizarContador();
+    setInterval(actualizarContador, 1000);
+  </script>
+</body>
+</html>
